@@ -2,6 +2,7 @@ import { searchAPI, KEY } from "./API";
 import "./App.css";
 import React, { useContext, useState } from "react";
 import AppContext from "./context/AppContext";
+import Card from "./components/Card";
 
 function App() {
   const [input, setInput] = useState("");
@@ -11,7 +12,6 @@ function App() {
   return (
     <div>
       <h1>Chill Weather</h1>
-      <h2>{}</h2>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -25,6 +25,7 @@ function App() {
         />
         <button type="submit">enter</button>
       </form>
+      <Card />
     </div>
   );
 }
