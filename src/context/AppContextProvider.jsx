@@ -1,18 +1,29 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppContext from './AppContext';
+import searchAPI from '../API';
 
 function Provider({ children }) {
   const [weatherData, setWeatherData] = useState({});
+  const [cardWidth, setCardWidth] = useState(0);
+  console.log(cardWidth, weatherData);
 
-  const contextValue = React.useMemo(() => ({
-    weatherData, setWeatherData,
-  }), [weatherData]);
+  useEffect(() => {
+    searchAPI('taubate').then((r) => setWeatherData(r));
+  }, [cardWidth]);
+
+  const contextValue = React.useMemo(
+    () => ({
+      weatherData,
+      setWeatherData,
+      cardWidth,
+      setCardWidth,
+    }),
+    [weatherData]
+  );
 
   return (
-    <AppContext.Provider value={contextValue}>
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );
 }
 

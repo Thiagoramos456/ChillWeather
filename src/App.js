@@ -1,21 +1,24 @@
-import { searchAPI, KEY } from "./API";
-import "./App.css";
-import React, { useContext, useState } from "react";
-import AppContext from "./context/AppContext";
-import Card from "./components/Card";
+import searchAPI from './API';
+import './App.css';
+import React, { useContext, useState, useEffect } from 'react';
+import AppContext from './context/AppContext';
+import Carousel from './components/Carousel';
 
 function App() {
-  const [input, setInput] = useState("");
-  const [search, setSearch] = useState("");
+  const [input, setInput] = useState('');
+  const [search, setSearch] = useState('');
   const { weatherData, setWeatherData } = useContext(AppContext);
-  console.log(weatherData);
+
+  useEffect(() => {
+    console.log(weatherData);
+  }, [weatherData]);
   return (
     <div>
       <h1>Chill Weather</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          searchAPI(KEY, input).then((r) => setWeatherData(r));
+          searchAPI(input).then((r) => setWeatherData(r));
         }}
       >
         <input
@@ -25,7 +28,7 @@ function App() {
         />
         <button type="submit">enter</button>
       </form>
-      <Card />
+      <Carousel />
     </div>
   );
 }
