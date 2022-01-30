@@ -1,18 +1,24 @@
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import AppContext from './AppContext';
+import PropTypes from "prop-types";
+import React, { useState } from "react";
+import AppContext from "./AppContext";
 
 function Provider({ children }) {
   const [weatherData, setWeatherData] = useState();
 
-  const contextValue = React.useMemo(() => ({
-    weatherData, setWeatherData,
-  }), [weatherData]);
+  const [language, setLanguage] = useState("");
+
+  const contextValue = React.useMemo(
+    () => ({
+      weatherData,
+      setWeatherData,
+      language,
+      setLanguage,
+    }),
+    [weatherData]
+  );
 
   return (
-    <AppContext.Provider value={contextValue}>
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );
 }
 
