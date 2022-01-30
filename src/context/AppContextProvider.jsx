@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import AppContext from './AppContext';
 
 function Provider({ children }) {
-  const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState();
 
   const contextValue = React.useMemo(() => ({
     weatherData, setWeatherData,
