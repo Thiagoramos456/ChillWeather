@@ -4,7 +4,7 @@ import AppContext from '../context/AppContext';
 import searchAPI from '../API';
 
 export default function LanguageSelect() {
-  const { setLanguage, city, setWeatherData, setIsFetching } =
+  const { setLanguage, city, setWeatherData, } =
     useContext(AppContext);
   return (
     <>
