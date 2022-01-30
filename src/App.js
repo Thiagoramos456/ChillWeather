@@ -3,6 +3,8 @@ import './App.css';
 import React, { useContext, useState, useEffect } from 'react';
 import AppContext from './context/AppContext';
 import Carousel from './components/Carousel';
+import LanguageSelect from './components/LanguageSelect';
+import LocationInput from './components/LocationInput';
 
 function App() {
   const [input, setInput] = useState('');
@@ -14,20 +16,8 @@ function App() {
   }, [weatherData]);
   return (
     <div>
-      <h1>Chill Weather</h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          searchAPI(input).then((r) => setWeatherData(r));
-        }}
-      >
-        <input
-          value={input}
-          onChange={({ target: { value } }) => setInput(value)}
-          type="text"
-        />
-        <button type="submit">enter</button>
-      </form>
+      <LocationInput />
+      <LanguageSelect />
       <Carousel />
     </div>
   );

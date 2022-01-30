@@ -6,10 +6,13 @@ import searchAPI from '../API';
 function Provider({ children }) {
   const [weatherData, setWeatherData] = useState({});
   const [cardWidth, setCardWidth] = useState(0);
+  const [city, setCity] = useState('sao paulo');
+  const [language, setLanguage] = useState('pt');
+  const [isFetching, setIsFetching] = useState(false);
   console.log(cardWidth, weatherData);
 
   useEffect(() => {
-    searchAPI('taubate').then((r) => setWeatherData(r));
+    searchAPI('taubate', 'pt').then((r) => setWeatherData(r));
   }, [cardWidth]);
 
   const contextValue = React.useMemo(
@@ -18,6 +21,12 @@ function Provider({ children }) {
       setWeatherData,
       cardWidth,
       setCardWidth,
+      city,
+      setCity,
+      language,
+      setLanguage,
+      isFetching,
+      setIsFetching,
     }),
     [weatherData]
   );

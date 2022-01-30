@@ -1,10 +1,20 @@
-.track {
+.carousel {
   height: 80vh;
   position: relative;
+  overflow: hidden;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.track {
+  height: 100%;
+  /* position: relative;
   display: flex;
   justify-content: center;
   width: 90%;
   margin: 0 auto;
+  overflow: hidden; */
+  transition: transform 0.4s ease-in;
 }
 
 .card {
@@ -30,6 +40,6 @@
   left: 10%;
 }
 
-.arrow-rigth {
+.arrow-right {
   right: 10%;
 }
