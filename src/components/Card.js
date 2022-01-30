@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import AppContext from "../context/AppContext";
+import Hour from "./Hour";
 
 export default function Card() {
   const {
+    weatherData,
     weatherData: {
       location: { name, region, lat, lon, country, localtime, tz_id },
       forecast: { forecastday },
@@ -16,7 +18,7 @@ export default function Card() {
       },
     },
   } = useContext(AppContext);
-  console.log(forecastday)
+  console.log(weatherData);
   return (
     <>
       <h1>Data:</h1>
@@ -39,16 +41,7 @@ export default function Card() {
         <h1>Por do Sol</h1>
         <p>{forecastday[0].astro.sunset}</p>
         <h1>Horarios:</h1>
-        {forecastday[0].hour.map((hour) => (
-        <div>
-            <span>
-            {hour.time}
-            </span>
-            <img src={hour.condition.icon} alt={hour.condition.code} />
-            <span>
-            {hour.condition.text}
-            </span>
-        </div>))}
+        {forecastday[0].hour.map(Hour)}
       </div>
     </>
   );
