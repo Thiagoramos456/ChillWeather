@@ -7,7 +7,7 @@ import LanguageSelect from "./components/LanguageSelect";
 
 function App() {
   const [input, setInput] = useState("");
-  const { weatherData, setWeatherData, language } = useContext(AppContext);
+  const { weatherData, setWeatherData, language, setCity } = useContext(AppContext);
   // useEffect(() => {
   //   searchAPI(KEY, 'London').then(r => setWeatherData(r))
   // }, []);
@@ -18,6 +18,7 @@ function App() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          setCity(input)
           searchAPI(KEY, input, language).then((r) => setWeatherData(r));
         }}
       >
