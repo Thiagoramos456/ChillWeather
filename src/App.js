@@ -6,9 +6,7 @@ import Card from "./components/Card";
 
 function App() {
   const [input, setInput] = useState("");
-  const [search, setSearch] = useState("");
   const { weatherData, setWeatherData } = useContext(AppContext);
-  console.log(weatherData);
   return (
     <div>
       <h1>Chill Weather</h1>
@@ -25,7 +23,7 @@ function App() {
         />
         <button type="submit">enter</button>
       </form>
-      <Card />
+      {weatherData && <Card />}
     </div>
   );
 }
