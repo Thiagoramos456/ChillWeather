@@ -19,9 +19,9 @@ export default function Card() {
         },
       } = useContext(AppContext);   
   return (
-    <div className='flex flex-col items-center border-4 py-6 w-5/6 mx-auto rounded-3xl'>
-      <h1 className='text-2xl'>{ name }</h1>
-      <h4>{ localtime }</h4>
+    <div className='flex flex-col shadow-2xl items-center py-6 w-5/6 mx-auto rounded-3xl'>
+      <h1 className='text-lg'>{ name }</h1>
+      <h4>{ forecastday[0].date }</h4>
       <img
         className='w-32'
         src={icon}
