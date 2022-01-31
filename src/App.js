@@ -7,9 +7,9 @@ import LanguageSelect from "./components/LanguageSelect";
 
 function App() {
   const [input, setInput] = useState("");
-  const { weatherData, setWeatherData, language, setCity } = useContext(AppContext);
+  const { weatherData, setWeatherData, language, setCity, city } = useContext(AppContext);
   // useEffect(() => {
-  //   searchAPI(KEY, 'London').then(r => setWeatherData(r))
+  //   searchAPI(KEY, city, language).then(r => setWeatherData(r))
   // }, []);
   return (
     <div>

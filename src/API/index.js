@@ -5,6 +5,3 @@ export function searchAPI(key, city, language) {
     `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&days=6&aqi=no&alerts=no&lang=${language}`
   ).then((r) => r.json());
 }
-
-
-
