@@ -19,7 +19,7 @@ export default function Card() {
         },
       } = useContext(AppContext);   
   return (
-    <div className='flex flex-col shadow-2xl items-center py-6 w-5/6 mx-auto rounded-3xl'>
+    <div className='flex flex-col shadow-2xl items-center py-4 w-5/6 mx-auto rounded-3xl'>
       <h1 className='text-lg'>{ name }</h1>
       <h4>{ forecastday[0].date }</h4>
       <img
@@ -27,7 +27,7 @@ export default function Card() {
         src={icon}
         alt={text}
       />
-      <p className='text-sky-800 mt-4 mb-2 text-2xl'>{text}</p>
+      <p className='text-sky-800 mb-2 text-2xl'>{text}</p>
       <h1 className="text-3xl">{temp_c}°</h1>
       <div className='flex justify-between mt-4'>
         <div className="mx-2 flex align-bottom">
