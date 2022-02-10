@@ -1,18 +1,19 @@
-import languages from "../services/languages";
-import { useContext } from "react";
-import AppContext from "../context/AppContext";
-import { KEY, searchAPI } from "../API";
+import languages from '../services/languages';
+import { useContext } from 'react';
+import AppContext from '../context/AppContext';
+import searchAPI from '../API';
 
 export default function LanguageSelect() {
-  const { setLanguage, city, setWeatherData } = useContext(AppContext);
+  const { setLanguage, city, setWeatherData, } =
+    useContext(AppContext);
   return (
     <>
       <select
         onChange={({ target: { value } }) => {
-          searchAPI(KEY, city, value).then((r) => setWeatherData(r));
+          searchAPI(city, value).then((r) => setWeatherData(r));
           setLanguage(value);
         }}
-        defaultValue=""
+        defaultValue="pt"
         name="language"
         id="language"
       >
