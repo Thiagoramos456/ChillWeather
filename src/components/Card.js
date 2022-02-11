@@ -1,45 +1,32 @@
 import windIcon from '../images/wind.svg';
 import waterDropIcon from '../images/water-droplet.svg';
-import { useContext } from "react";
+import { useContext } from 'react';
 import AppContext from '../context/AppContext';
+import { useSwiper, useSwiperSlide } from 'swiper/react';
 
-export default function Card() {
-    const {
-        weatherData: {
-          location: { name, region, lat, lon, country, localtime, tz_id },
-          forecast: { forecastday },
-          current: {
-            cloud,
-            condition: { icon, text },
-            feelslike_c,
-            humidity,
-            temp_c,
-            wind_kph,
-          },
-        },
-      } = useContext(AppContext);   
+
+export default function Card({ place, date, weatherIcon, description, temp_c, humidity, wind }) {
+  const swiper = useSwiperSlide();
+  console.log(swiper);
   return (
-    <div className='flex flex-col shadow-2xl items-center py-4 w-5/6 mx-auto rounded-3xl'>
-      <h1 className='text-lg'>{ name }</h1>
-      <h4>{ forecastday[0].date }</h4>
-      <img
-        className='w-32'
-        src={icon}
-        alt={text}
-      />
-      <p className='text-sky-800 mb-2 text-2xl'>{text}</p>
-      <h1 className="text-3xl">{temp_c}°</h1>
+    <div className='flex flex-col shadow-2xl items-center pt-4 mb-2 pb-10 w-5/6 mx-auto rounded-3xl'>
+      <h1 className='text-lg'>{place}</h1>
+      <h4>{date}</h4>
+      <img className='w-32' src={weatherIcon} alt={description} />
+      <p className='text-sky-800 mb-2 text-2xl'>{description}</p>
+      <h1 className='text-3xl'>{temp_c}°</h1>
       <div className='flex justify-between mt-4'>
-        <div className="mx-2 flex align-bottom">
+        <div className='mx-2 flex align-bottom'>
           <img className='w-8' src={waterDropIcon}></img>
-          <span className='mx-3'>{wind_kph}</span>
+          <span className='mx-3'>{wind}</span>
         </div>
-        <div className="mx-2 flex">
+        <div className='mx-2 flex'>
           <img className='w-10' src={windIcon}></img>
           <span className='mx-3'>{humidity}</span>
         </div>
       </div>
-    </div>)
+    </div>
+  );
 }
 
 // export default function Card() {

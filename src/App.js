@@ -6,15 +6,17 @@ import LanguageSelect from './components/LanguageSelect';
 
 import LocationInput from './components/LocationInput';
 import WeatherHourCards from './components/WeatherHourCards';
+import WeatherDayCarousel from './components/WeatherDayCarousel';
+
 
 function App() {
   const { weatherData } = useContext(AppContext);
   return (
-    <div className='flex flex-col items-center'>
+    <div>
       <LocationInput />
       {/* <LanguageSelect /> */}
       <div>
-      {weatherData && <Card />}
+      {weatherData && <WeatherDayCarousel />}
       {weatherData && <WeatherHourCards />}
       </div>
     </div>
