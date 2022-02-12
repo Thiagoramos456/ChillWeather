@@ -4,13 +4,14 @@ import AppContext from '../context/AppContext';
 
 function LocationInput() {
   const [input, setInput] = useState('');
-  const { setWeatherData } = useContext(AppContext);
+  const { setWeatherData, language, setCity } = useContext(AppContext);
 	
   return (
     <form
         onSubmit={(e) => {
           e.preventDefault();
-          searchAPI(KEY, input).then((r) => setWeatherData(r));
+          searchAPI(KEY, input, language).then((r) => setWeatherData(r));
+          setCity(input)
         }}
       >
       <div className='flex justify-center items-center mt-4 mb-6'>
